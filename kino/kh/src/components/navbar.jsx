@@ -22,16 +22,16 @@ const handleSearch = () => {
                 <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
             <a className="flex flex-shrink-0 items-center mr-2" href="/">
 
-                      <span className=' text-3xl text-amber-50 font-bold ml-1'>
+        <span className=' text-3xl text-amber-50 font-bold ml-1'>
             Kino
             <span className='bg-amber-500 rounded-sm inline-flex text-black font-bold pl-1 pr-1 ml-0.5'>hub</span>
 
             </span>
               </a>
-              <div className='m-auto inline-flex w-2xl justify-between bg-amber-500 rounded-sm'>
+              <div className='m-auto inline-flex w-2xl max-w-2xl justify-between bg-amber-500 rounded-sm'>
                 <input onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                 type="text" value={query} onChange={(e) => setQuery(e.target.value)}
-                 placeholder='Enter movie name' className='bg-gray-100 rounded-sm p-1 pl-4 m-auto w-2xl' />
+                 placeholder='Search Movies or Shows' className='bg-gray-100 rounded-sm p-1 pl-4 m-auto w-2xl max-w-2xl' />
                 <button type='button'
                 onClick={handleSearch}
                 className='bg-amber-500 rounded-sm w-auto pr-2 pl-2 m-auto hover:bg-amber-100 hover:cursor-pointer'>
