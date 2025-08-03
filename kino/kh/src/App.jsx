@@ -4,6 +4,11 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/navbar'
 import MovieList from './components/Movielist'
+import { Route,
+   createBrowserRouter,
+    createRoutesFromElements,
+    RouterProvider,
+    } from 'react-router-dom';
 
 function App() {
   
