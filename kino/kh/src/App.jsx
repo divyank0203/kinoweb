@@ -3,21 +3,20 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/navbar'
-import MovieList from './components/Movielist'
-import { Route,
-   createBrowserRouter,
-    createRoutesFromElements,
-    RouterProvider,
-    } from 'react-router-dom';
+import MovieList from './components/Home'
+import { createBrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
   
 
   return (
     <>
-    <Navbar/>
-    <MovieList/>
+  <Router>
+    <Navbar />
+    <Routes>
     
+    </Routes>
+  </Router>
     </>
   )
 }
