@@ -1,59 +1,70 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoSearchCircle } from "react-icons/io5";
-import logo from '../assets/images/image.png'
 import { MdOutlineFavorite } from "react-icons/md";
-function Navbar() {
-const [query, setQuery] = useState("");
+// If you have a logo image, uncomment next line and the <img />
+// import logo from "../assets/images/image.png";
 
-const handleSearch = () => {
-  if (query.trim() !== "") {
-    // Ideally: lift this to parent or trigger API call here
-    console.log("Searching for:", query);
-  }
-};
+export default function Navbar({ onSearch }) {
+  const [input, setInput] = useState("");
 
+  const submit = (e) => {
+    e.preventDefault();
+    const q = input.trim();
+    if (q) onSearch(q);
+  };
 
   return (
-    <>
-    <nav className="navbar navbar-expand-lg navbar-light bg-gray-800 border-b border-b-gray-600 shadow-2xl">
-        <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
-            <div className='flex h-15 items-center justify-between'>
-                <div className='flex flex-1 items-center justify-center md:items-stretch md:justify-start'>
-            <a className="flex flex-shrink-0 items-center mr-2" href="/">
-
-        <span className=' text-3xl text-amber-50 font-bold ml-1'>
-            Kino
-            <span className='bg-amber-500 rounded-sm inline-flex text-black font-bold pl-1 pr-1 ml-0.5'>hub</span>
-
-            </span>
-              </a>
-              <div className='m-auto inline-flex w-2xl max-w-2xl justify-between bg-amber-500 rounded-sm'>
-                <input onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                type="text" value={query} onChange={(e) => setQuery(e.target.value)}
-                 placeholder='Search Movies or Shows' className='bg-gray-100 rounded-sm p-1 pl-4 m-auto w-2xl max-w-2xl' />
-                <button type='button'
-                onClick={handleSearch}
-                className='bg-amber-500 rounded-sm w-auto pr-2 pl-2 m-auto hover:bg-amber-100 hover:cursor-pointer'>
-                    <IoSearchCircle className=' text-3xl'/>
-                </button>
-              </div>
-              <span className='text-white  text-xs flex flex-shrink-0 items-center mr-2 hover:cursor-pointer hover:font-bold hover:text-black hover:bg-amber-500 hover:p-1 hover:rounded-2xl'>
-                
-                    <MdOutlineFavorite className='my-auto mx-1 '/>
-                    <p className=''>Favorites</p>
-                    
-                
-                
+    <nav className="sticky top-0 z-20 bg-neutral-950/90 backdrop-blur border-b border-neutral-800">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="h-16 flex items-center justify-between">
+          {/* Left: Brand */}
+          <Link to="/" className="flex items-center gap-2">
+            {/* <img src={logo} alt="Kinohub" className="h-9 w-9 rounded-full border-2 border-amber-500" /> */}
+            <span className="text-2xl font-bold tracking-tight text-neutral-50">
+              Kino
+              <span className="ml-1 px-1 rounded-sm bg-amber-500 text-black font-extrabold">
+                hub
               </span>
+            </span>
+          </Link>
 
-            </div>
-            </div>
-            </div>
+          {/* Middle: Search */}
+          <form
+            onSubmit={submit}
+            className="flex items-center bg-neutral-900 rounded-full border border-neutral-800 focus-within:border-amber-500 transition w-full max-w-xl"
+          >
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Search movies or shows…"
+              className="flex-1 px-4 py-2 bg-transparent text-neutral-100 placeholder-neutral-400 outline-none"
+              aria-label="Search movies or shows"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") submit(e);
+              }}
+            />
+            <button
+              type="submit"
+              className="px-2 py-2 rounded-r-full text-amber-500 hover:text-amber-400 hover:cursor-pointer"
+              aria-label="Search"
+            >
+              <IoSearchCircle className="text-3xl" />
+            </button>
+          </form>
+
+          {/* Right: Favorites (placeholder) */}
+          <button
+            type="button"
+            onClick={() => alert("Favorites coming soon")}
+            className="hidden sm:inline-flex items-center gap-2 text-sm text-neutral-100 hover:bg-white hover:text-black px-3 py-1.5 rounded-2xl transition hover:cursor-pointer"
+          >
+            <MdOutlineFavorite className="text-amber-500" />
+            Favorites
+          </button>
+        </div>
+      </div>
     </nav>
-    
-    </>
-  )
+  );
 }
-
-export default Navbar

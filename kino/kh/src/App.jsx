@@ -1,24 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/navbar'
-import MovieList from './components/Home'
-import { createBrowserRouter as Router, Routes } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Home from "./pages/Home";
+import MovieDetail from "./pages/MovieDetails";
 
-function App() {
-  
+export default function App() {
+  const [query, setQuery] = useState(""); // start empty; show CTA on home
 
   return (
-    <>
-  <Router>
-    <Navbar />
-    <Routes>
-    
-    </Routes>
-  </Router>
-    </>
-  )
+    <BrowserRouter>
+      <div className="min-h-screen bg-neutral-950 text-neutral-100">
+        <Navbar onSearch={(q) => setQuery(q)} />
+        <Routes>
+          <Route path="/" element={<Home query={query} />} />
+          <Route path="/movie/:id" element={<MovieDetail />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
 }
-
-export default App
