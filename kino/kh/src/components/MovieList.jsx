@@ -18,7 +18,11 @@ const randomQueries = [
   "Toy Story",
   "Jurassic Park",
   "The Godfather",
-  "Black Panther"
+  "Black Panther",
+  "Game",
+  "Super",
+  
+  
 ];
 
 function MovieList({ query }) {
