@@ -24,7 +24,7 @@ export default function Navbar({ onSearch }) {
             <span className="text-2xl font-bold tracking-tight text-neutral-50">
               Kino
               <span className="ml-1 px-1 rounded-sm bg-amber-500 text-black font-extrabold">
-                hub
+                web
               </span>
             </span>
           </Link>
