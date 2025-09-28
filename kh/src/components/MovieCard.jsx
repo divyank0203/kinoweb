@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function MovieCard({ movie }) {
+ function MovieCard({ movie }) {
   const { Title, Year, Poster, imdbID } = movie;
   const poster =
     Poster && Poster !== "N/A"
@@ -30,3 +30,5 @@ export default function MovieCard({ movie }) {
     </Link>
   );
 }
+
+export default MovieCard;
