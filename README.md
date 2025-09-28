@@ -1,2 +1,2 @@
 # kinohub
-kinoweb.vercel.app
+[Vercel App](kinoweb.vercel.app)
