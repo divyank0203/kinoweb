@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MovieCard from "./Moviecard.jsx";
+import MovieCard from "./Moviecard2.jsx";
 
 const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
